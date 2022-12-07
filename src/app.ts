@@ -4,12 +4,13 @@ import bodyParser from "body-parser";
 import compression from "compression";
 import games from "./games-router";
 import users from "./users-router";
+const corsOptions = require("./config/corsOptions");
 
 let port = process.env.PORT || 5000;
 
 const app = express();
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(
